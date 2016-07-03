@@ -94,9 +94,7 @@
                 </div>
                 <div class="blog-post-info__text__text">
                     {% block blog_post_list_post_content %}
-                        {% editable blog_post.content %}
-                            {{ blog_post.description_from_content|safe }}
-                        {% endeditable %}
+                        {{ blog_post.content|richtext_filters|safe }}
                     {% endblock %}
 
                 </div>
@@ -107,11 +105,11 @@
         </div>
     {% endfor %}
     <script>
-        $('.blog-post-info__text__text .editable-original').each(function () {
+        $('.blog-post-info__text__text').each(function () {
             console.log($(this).html())
-            $(this).html($(this).text().slice(0, 150)+'...');
+            $(this).html($(this).text().slice(0, 150) + '...');
         });
-        </script>
+    </script>
     {% pagination_for blog_posts %}
 
     {% if settings.COMMENTS_DISQUS_SHORTNAME %}
