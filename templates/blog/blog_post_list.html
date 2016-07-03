@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags staticfiles %}
+
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {% keywords_for page as keywords %}
+    {% for keyword in keywords %}
+        {% if not forloop.first %}, {% endif %}
+        {{ keyword }}
+    {% endfor %}
+{% endmetablock %}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static "css/blog_post_list.css" %}">
+{% endblock %}
+{% block meta_description %}{% metablock %}
+    {{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{#{% block title %}#}
+{#{% if page %}#}
+{#{% editable page.title %}{{ page.title }}{% endeditable %}#}
+{#{% else %}#}
+{#{% trans "Blog" %}#}
+{#{% endif %}#}
+{#{% endblock %}#}
+
+{#{% block breadcrumb_menu %}#}
+{#{{ block.super }}#}
+{#{% if tag or category or year or month or author %}#}
+{#<li>{% spaceless %}#}
+{#{% if tag %}#}
+{#    {% trans "Tag:" %} {{ tag }}#}
+{#{% else %}{% if category %}#}
+{#    {% trans "Category:" %} {{ category }}#}
+{#{% else %}{% if year or month %}#}
+{#    {% if month %}{{ month }}, {% endif %}{{ year }}#}
+{#{% else %}{% if author %}#}
+{#    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}#}
+{#{% endif %}{% endif %}{% endif %}{% endif %}#}
+{#{% endspaceless %}#}
+{#</li>#}
+{#{% endif %}#}
+{#{% endblock %}#}
+{% block middle_width %}col-md-12{% endblock %}
+{% block title %}{% endblock %}
+{% block main %}
+
+    {#{% if tag or category or year or month or author %}#}
+    {#    {% block blog_post_list_filterinfo %}#}
+    {#    <p>#}
+    {#    {% if tag %}#}
+    {#        {% trans "Viewing posts tagged" %} {{ tag }}#}
+    {#    {% else %}{% if category %}#}
+    {#        {% trans "Viewing posts for the category" %} {{ category }}#}
+    {#    {% else %}{% if year or month %}#}
+    {#        {% trans "Viewing posts from" %} {% if month %}{{ month }}, {% endif %}#}
+    {#        {{ year }}#}
+    {#    {% else %}{% if author %}#}
+    {#        {% trans "Viewing posts by" %}#}
+    {#        {{ author.get_full_name|default:author.username }}#}
+    {#    {% endif %}{% endif %}{% endif %}{% endif %}#}
+    {#    {% endblock %}#}
+    {#    </p>#}
+    {#{% else %}#}
+    {#    {% if page %}#}
+    {#    {% block blog_post_list_pagecontent %}#}
+    {#    {% if page.get_content_model.content %}#}
+    {#        {% editable page.get_content_model.content %}#}
+    {#        {{ page.get_content_model.content|richtext_filters|safe }}#}
+    {#        {% endeditable %}#}
+    {#    {% endif %}#}
+    {#    {% endblock %}#}
+    {#    {% endif %}#}
+    {#{% endif %}#}
+
+    {% for blog_post in blog_posts.object_list %}
+        <div class="blog-post-info col-xs-12">
+            <div class="blog-post-info__img col-xs-6">
+                {% if blog_post.featured_image %}
+                    <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 1024 768 %}">
+                {% else %}
+                    <img src="/static/img/example.jpg">
+                {% endif %}
+            </div>
+            <div class="blog-post-info__text col-xs-6">
+                <div class="blog-post-info__text__date">
+                    {{ blog_post.publish_date | date:'d.m.y' }}
+                </div>
+                <div class="blog-post-info__text__title">
+                    <h2>
+                        <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                    </h2>
+                </div>
+                <div class="blog-post-info__text__text">
+                    {% block blog_post_list_post_content %}
+                        {% editable blog_post.content %}
+                            {{ blog_post.description_from_content|safe }}
+                        {% endeditable %}
+                    {% endblock %}
+
+                </div>
+                <div class="blog-post-info__text__link">
+                    <a href="{{ blog_post.get_absolute_url }}">Читать статью</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <script>
+        $('.blog-post-info__text__text .editable-original').each(function () {
+            console.log($(this).html())
+            $(this).html($(this).text().slice(0, 150)+'...');
+        });
+        </script>
+    {% pagination_for blog_posts %}
+
+    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+        {% include "generic/includes/disqus_counts.html" %}
+    {% endif %}
+
+{% endblock %}
+
+{% block right_panel %}
+    {% include "blog/includes/filter_panel.html" %}
+{% endblock %}

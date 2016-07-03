@@ -1,0 +1,74 @@
+.navbar-custom {
+  background-color: #222;
+}
+.navbar-custom .container {
+  background-color: #222;
+}
+.navbar-custom .navbar-brand {
+  font-size: 26px;
+  color: #d8d6d6;
+  height: 70px;
+}
+.navbar-custom .navbar-brand p {
+  margin: 0;
+}
+.navbar-custom .navbar-brand p.navbar-text {
+  margin: 0;
+  font-style: normal;
+  font-size: 14px;
+  margin-top: 2px;
+}
+.navbar-custom .breadcrumb {
+  background-color: transparent;
+  padding: 25px 0;
+  margin: 0;
+}
+.navbar-custom .breadcrumb li {
+  color: #fff;
+}
+.navbar-custom .breadcrumb li a {
+  color: #fff;
+}
+.navbar-custom .navbar-nav li a {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: #aaa;
+}
+.navbar-custom .navbar-nav li a:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.navbar-custom .navbar-nav .open > a {
+  color: #fff;
+  background-color: transparent;
+}
+.navbar-custom .navbar-nav .dropdown-menu {
+  background-color: #333;
+}
+.navbar-custom .navbar-nav .dropdown-menu li a {
+  padding: 3px 20px;
+}
+.navbar-custom .navbar-nav .dropdown-menu li a:hover {
+  background: transparent;
+}
+body {
+  background-color: #222;
+  padding-top: 70px;
+}
+footer {
+  background-color: #1a1a1a;
+}
+footer .container {
+  background-color: #1a1a1a;
+}
+a {
+  color: #aaa;
+}
+a:hover {
+  color: #aaa;
+  text-decoration: underline;
+}
+
+.white-container {
+  background-color: #fff
+}

@@ -1,0 +1,91 @@
+.middle
+  margin-top: -16px
+  padding: 0
+  background-color #222
+.blog-post-info
+  height: 350px;
+  overflow: hidden;
+  margin-bottom: 15px
+  padding: 0;
+  &:nth-child(2n)
+    .blog-post-info__img
+      float:left
+  &:nth-child(2n)
+    .blog-post-info__img
+      float:right
+  &:hover
+    .blog-post-info__text
+      background-color #fff
+    .blog-post-info__img
+      transform: scale(1.1);
+  &__img
+    padding: 0
+    transition transform .2s
+    img
+      width: 100%
+      height: auto
+
+  &__text
+    text-align center
+    background-color #d3d3d3
+    padding: 30px 15px
+    height: 100%
+    transition background-color .2s
+    &__date
+      color: grey;
+      font-weight: bold;
+    &__title
+      a
+        font-size: 50px;
+        color: #333;
+        text-decoration none
+      h2
+        position relative
+        &:after
+          content: '';
+          position: absolute;
+          background: #333;
+          width: 4.5em;
+          height: 5px;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          bottom: -20px;
+    &__text
+          margin-top: 30px;
+          max-height: 70px;
+          overflow: hidden;
+    &__link
+      a
+        color #333
+        text-decoration underline
+      margin-top: 15px
+
+.main-img
+  img
+    width: 100%;
+    height: auto;
+
+
+h1
+  font-size: 70px;
+  color: #333;
+  text-align: center;
+  position: relative;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  &:after
+    content: '';
+    position: absolute;
+    background: #333;
+    width: 2.5em;
+    height: 5px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -20px;
+h6.blog-post-info__text__date
+  text-align center
+  margin-bottom: 0;
+  margin-top: 25px;
+
