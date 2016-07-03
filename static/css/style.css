@@ -68,7 +68,6 @@ a:hover {
   color: #aaa;
   text-decoration: underline;
 }
-
 .white-container {
-  background-color: #fff
+  background-color: #fff !important;
 }

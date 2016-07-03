@@ -41,9 +41,12 @@
   font-weight: bold;
 }
 .blog-post-info__text__title a {
-  font-size: 50px;
   color: #333;
   text-decoration: none;
+  font-size: 30px;
+}
+.blog-post-info__text__title a.large-title {
+  font-size: 50px;
 }
 .blog-post-info__text__title h2 {
   position: relative;
@@ -68,18 +71,15 @@
   margin-top: 15px;
 }
 .blog-post-info__text__link a {
+  font-weight: bold;
   color: #333;
-  text-decoration: underline;
 }
 .main-img img {
   width: 100%;
   height: auto;
 }
-.white-container {
-  background-color: #fff;
-}
 h1 {
-  font-size: 70px;
+  font-size: 46px;
   color: #333;
   text-align: center;
   position: relative;
@@ -101,4 +101,7 @@ h6.blog-post-info__text__date {
   text-align: center;
   margin-bottom: 0;
   margin-top: 25px;
+}
+.padding-0-20 {
+  padding: 0 20px;
 }
