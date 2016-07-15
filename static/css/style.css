@@ -71,3 +71,69 @@ a:hover {
 .white-container {
   background-color: #fff !important;
 }
+.white-container a {
+  color: #333;
+  text-decoration: underline;
+}
+.white-container a:hover {
+  color: #333;
+  text-decoration: none;
+}
+.pagination {
+  width: 100%;
+  text-align: center;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: none;
+  padding: 7px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #d3d3d3;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+.pagination li.page-info {
+  display: none;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  color: #222;
+  background-color: #eee;
+  border-color: #ddd;
+  border-radius: 50%;
+}
+.pagination > li:last-child > a,
+.pagination > .previous > a,
+.pagination > li:last-child > span,
+.pagination > .previous > span {
+  padding: 7px 9px;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: #222;
+  cursor: default;
+  background-color: #d3d3d3;
+  border-color: #adadad;
+  border-radius: 50%;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #777;
+  cursor: not-allowed;
+  background-color: transparent;
+  border-color: #ddd;
+}
